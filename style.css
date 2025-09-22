@@ -1,3 +1,6 @@
+/* =========================
+   Global Styles
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -39,7 +42,9 @@ body {
   color: #f8fafc;
 }
 
-/* Card */
+/* =========================
+   Card / Profile Section
+========================= */
 .card {
   background: rgba(30, 41, 59, 0.8);
   backdrop-filter: blur(12px);
@@ -50,11 +55,12 @@ body {
   width: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   animation: float 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
 }
 
 .profile-img {
@@ -65,7 +71,7 @@ body {
   border: 5px solid #38bdf8;
   margin-bottom: 20px;
   box-shadow: 0 0 25px #38bdf8;
-  transition: 0.4s;
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .profile-img:hover {
@@ -92,7 +98,9 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Skills */
+/* =========================
+   Skills Section
+========================= */
 .skills {
   margin: 20px 0;
   display: flex;
@@ -122,12 +130,18 @@ p {
   object-fit: contain;
 }
 
+/* Hover Gradient Text Effect */
 .skill:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 20px rgba(14,165,233,0.8);
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Links */
+/* =========================
+   Links / Social Media
+========================= */
 .links a {
   display: inline-block;
   margin: 10px;
@@ -148,9 +162,16 @@ p {
 
 .links i {
   margin-right: 8px;
+  transition: transform 0.3s;
 }
 
-/* Projects */
+.links a:hover i {
+  transform: rotate(15deg);
+}
+
+/* =========================
+   Projects Section
+========================= */
 .projects {
   margin-top: 60px;
   text-align: center;
@@ -187,6 +208,11 @@ p {
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
 }
 
 .project-info {
@@ -207,13 +233,42 @@ p {
   animation: fadeIn 2.5s ease-in-out;
 }
 
+/* Project Button */
+.project-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  border-radius: 12px;
+  background: #38bdf8;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.project-button:hover {
+  background: #0ea5e9;
+  transform: translateY(-3px);
+}
+
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 700px) {
   .project-info {
     text-align: center;
   }
 }
 
-/* Footer */
+@media (max-width: 500px) {
+  .project-card {
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   Footer
+========================= */
 .footer {
   margin-top: 40px;
   padding: 15px 10px;
