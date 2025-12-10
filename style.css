@@ -277,3 +277,20 @@ p {
   font-size: 0.9rem;
   user-select: none;
 }
+/* Add to your existing styles */
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+    animation: shimmer 3s infinite;
+}
+
+.contact-item {
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(5px);
+}
