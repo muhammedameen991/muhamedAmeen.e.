@@ -1,748 +1,408 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhamed Ameen.E - Full Stack Developer Portfolio</title>
-  <!-- Load Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Configure Tailwind to use Inter font and enable dark mode styling -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            'primary-dark': '#0f172a', // slate-900
-            'secondary-dark': '#1e293b', // slate-800
-            'accent': '#0ea5e9', // sky-500
-            'accent-light': '#38bdf8', // sky-400
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'fadeIn': 'fadeIn 0.8s ease-in-out forwards',
-            'slideIn': 'slideIn 0.8s ease-out forwards',
-            'shimmer': 'shimmer 3s infinite',
-            'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            slideIn: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            shimmer: {
-              '0%': { transform: 'translateX(-100%)' },
-              '100%': { transform: 'translateX(100%)' },
-            },
-          },
-        },
-      },
-    }
-  </script>
-  <!-- Google Fonts for Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
-  <style>
-    /* Custom scrollbar styling for aesthetics */
-    body {
-      scrollbar-width: thin;
-      scrollbar-color: #0ea5e9 #0f172a;
-    }
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0f172a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #0ea5e9;
-      border-radius: 10px;
-    }
-    
-    /* Utility to hide the placeholder background if a real image loads */
-    .project-placeholder {
-        background-color: #334155; /* slate-700 fallback */
-    }
-    .project-card img:not([src*='placehold.co']) {
-        display: block; /* Ensure real images show */
-    }
-    
-    /* Smooth scrolling behavior */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Gradient text effect */
-    .gradient-text {
-      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    /* Glow effect for interactive elements */
-    .glow-on-hover:hover {
-      box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
-    }
-    
-    /* Section fade-in animation */
-    .section-fade-in {
-      opacity: 0;
-      animation: fadeIn 0.8s ease-in-out forwards;
-    }
-    
-    /* Staggered animation for skill chips */
-    .skill-chip:nth-child(odd) {
-      animation-delay: 0.1s;
-    }
-    .skill-chip:nth-child(even) {
-      animation-delay: 0.2s;
-    }
-    
-    /* Parallax effect for background */
-    .parallax-bg {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    
-    /* Custom animation for contact items */
-    .contact-item {
-      transition: all 0.3s ease;
-    }
-    .contact-item:hover {
-      transform: translateX(5px);
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhamed Ameen E | Full Stack Developer</title>
+  <meta name="description" content="Portfolio of Muhamed Ameen E - Full Stack Developer and Competitive Programmer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<body class="bg-primary-dark min-h-screen flex flex-col items-center p-4 sm:p-8 text-white font-sans transition-all duration-300">
-    
-  <!-- Navigation Menu (Fixed) -->
-  <nav id="navbar" class="fixed top-0 z-50 w-full bg-secondary-dark/90 backdrop-blur-sm shadow-lg p-3 transition-all duration-300">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center">
-      <a href="#" class="text-xl font-bold gradient-text mb-2 sm:mb-0">Muhamed Ameen.E</a>
-      <div class="flex space-x-4 sm:space-x-6">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top">Muhamed Ameen E</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="pt-24 pb-16 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
-    <!-- Text Content -->
-    <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">
-        <span class="gradient-text">Muhamed Ameen E</span>
-      </h1>
-      <p class="text-xl text-slate-300 mb-6 font-light">
-        Full Stack Developer & Competitive Programmer
-      </p>
-      <p class="text-lg text-slate-400 mb-8 max-w-lg">
-        I build clean, efficient, and visually appealing applications that solve real-world problems.
-      </p>
-      <div class="flex flex-wrap justify-center md:justify-start gap-4">
-        <a href="#projects" class="cta-btn">
-          <i class="fas fa-code mr-2"></i> View My Work
-        </a>
-        <a href="#contact" class="cta-btn-secondary">
-          <i class="fas fa-paper-plane mr-2"></i> Get In Touch
-        </a>
-      </div>
-    </div>
-    
-    <!-- Profile Card -->
-    <div class="md:w-1/2 flex justify-center">
-      <div class="profile-card floating-card w-full max-w-md bg-secondary-dark/80 backdrop-blur-md rounded-xl p-6 sm:p-8 shadow-2xl border border-sky-500/30 transition-all duration-500 hover:shadow-sky-500/40">
-        <div class="text-center">
-          <!-- Profile Image -->
-          <img 
-            src="profile-img.png" 
-            alt="Profile Picture" 
-            class="profile-img w-36 h-36 sm:w-48 sm:h-48 rounded-full object-cover mx-auto border-4 border-accent shadow-xl shadow-accent/50 mb-6 transition-transform duration-500 hover:scale-[1.05]" 
-          />
-          
-          <!-- Social Links -->
-          <div class="flex flex-wrap justify-center gap-4 mb-4">
-            <a href="https://www.instagram.com/am1een__/" target="_blank" rel="noopener" class="social-link">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.instagram.com/dm.am1een/" target="_blank" rel="noopener" class="social-link">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/muhammeed-ameeen-7a161134b" target="_blank" rel="noopener" class="social-link">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="social-link">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
-          
-          <!-- Quick Stats -->
-          <div class="grid grid-cols-3 gap-4 mt-6">
-            <div class="text-center">
-              <p class="text-2xl font-bold text-accent">10+</p>
-              <p class="text-sm text-slate-400">Projects</p>
-            </div>
-            <div class="text-center">
-              <p class="text-2xl font-bold text-accent">5+</p>
-              <p class="text-sm text-slate-400">Technologies</p>
-            </div>
-            <div class="text-center">
-              <p class="text-2xl font-bold text-accent">2+</p>
-              <p class="text-sm text-slate-400">Years Experience</p>
-            </div>
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Full Stack Developer</p>
+          <h1>Muhamed Ameen E</h1>
+          <p class="hero-subhead">Full Stack Developer who builds clean, efficient applications that solve real-world problems.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">View My Work</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- About Me Section -->
-  <section id="about" class="w-full max-w-6xl mt-16 sm:mt-24 p-4 section-fade-in">
-    <h2 class="section-title">About Me</h2>
-    <div class="bg-secondary-dark/70 p-6 sm:p-8 rounded-xl shadow-2xl border border-slate-700/50">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div>
-          <p class="text-slate-300 text-lg leading-relaxed mb-4">
-            I am a passionate Full Stack Developer and Competitive Programmer dedicated to building clean, efficient, and visually appealing applications. I thrive on challenges, whether it's optimizing an algorithm or creating a smooth, responsive user interface.
-          </p>
-          <p class="text-slate-300 text-lg leading-relaxed">
-            My journey in tech is driven by curiosity and a desire to turn complex problems into simple digital solutions. I'm always eager to learn new technologies and contribute to exciting projects. Let's build something amazing together!
-          </p>
-        </div>
-        <div class="flex flex-col justify-center space-y-6">
-          <div class="flex items-start">
-            <div class="bg-accent/20 p-3 rounded-full mr-4">
-              <i class="fas fa-code text-accent"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-white mb-1">Full Stack Development</h3>
-              <p class="text-slate-400">Building end-to-end web applications with modern technologies</p>
-            </div>
+        <aside class="hero-panel" aria-label="Developer strengths">
+          <div class="hero-dp-wrap">
+            <img src="profile-img.png" alt="Profile photo of Muhamed Ameen E" class="hero-dp" loading="lazy">
           </div>
-          <div class="flex items-start">
-            <div class="bg-accent/20 p-3 rounded-full mr-4">
-              <i class="fas fa-brain text-accent"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-white mb-1">Competitive Programming</h3>
-              <p class="text-slate-400">Solving complex algorithmic challenges efficiently</p>
-            </div>
-          </div>
-          <div class="flex items-start">
-            <div class="bg-accent/20 p-3 rounded-full mr-4">
-              <i class="fas fa-paint-brush text-accent"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-white mb-1">UI/UX Design</h3>
-              <p class="text-slate-400">Creating intuitive and visually appealing user interfaces</p>
-            </div>
-          </div>
-        </div>
+          <p class="panel-title">Build Philosophy</p>
+          <ul>
+            <li>
+              <span>Architecture</span>
+              <strong>Practical and scalable</strong>
+            </li>
+            <li>
+              <span>Frontend</span>
+              <strong>Clean and responsive</strong>
+            </li>
+            <li>
+              <span>Backend</span>
+              <strong>Reliable and efficient</strong>
+            </li>
+          </ul>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="w-full max-w-6xl mt-16 sm:mt-24 p-4 section-fade-in">
-    <h2 class="section-title">Technical Expertise</h2>
-    <div class="bg-secondary-dark/70 p-6 rounded-xl shadow-2xl border border-slate-700/50">
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold text-accent-light mb-4 text-center">Frontend Technologies</h3>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg" alt="Tailwind CSS Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Icon" class="w-5 h-5" /> </span>
+    <section class="stats section-tight" aria-label="Key metrics">
+      <div class="container">
+        <div class="stats-grid">
+          <article class="stat-card">
+            <p class="value">5+</p>
+            <p class="label">Projects Shipped</p>
+          </article>
+          <article class="stat-card">
+            <p class="value">3+</p>
+            <p class="label">Years Coding</p>
+          </article>
+          <article class="stat-card">
+            <p class="value">100%</p>
+            <p class="label">Problem-Solving Focus</p>
+          </article>
         </div>
+        <p class="trusted-line">Trusted by Collaborators <span aria-hidden="true">&#10084;&#65039;</span></p>
       </div>
-      
-      <div class="mb-8">
-        <h3 class="text-xl font-semibold text-accent-light mb-4 text-center">Backend & Database</h3>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="NodeJS Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL Icon" class="w-5 h-5" /> </span>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <p class="section-kicker">About</p>
+        <h2>More Than Just Code.</h2>
+        <p class="section-copy">I'm a passionate Full Stack Developer and Competitive Programmer dedicated to turning complex problems into simple digital solutions. I thrive on challenges, whether it's optimizing an algorithm or creating a smooth, responsive UI. You bring the vision - I'll handle the architecture, frontend finesse, and backend logic to build something amazing.</p>
+
+        <div class="service-grid" role="list" aria-label="Core strengths">
+          <article class="service-card" role="listitem">
+            <div class="service-icon" aria-hidden="true">FS</div>
+            <p class="service-index">01</p>
+            <h3>Full Stack Development</h3>
+            <p>Building end-to-end applications</p>
+          </article>
+          <article class="service-card" role="listitem">
+            <div class="service-icon" aria-hidden="true">CP</div>
+            <p class="service-index">02</p>
+            <h3>Competitive Programming</h3>
+            <p>Solving complex algorithmic challenges</p>
+          </article>
+          <article class="service-card" role="listitem">
+            <div class="service-icon" aria-hidden="true">UI</div>
+            <p class="service-index">03</p>
+            <h3>UI/UX Implementation</h3>
+            <p>Creating intuitive interfaces from designs</p>
+          </article>
         </div>
       </div>
-      
-      <div>
-        <h3 class="text-xl font-semibold text-accent-light mb-4 text-center">Programming Languages</h3>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ Icon" class="w-5 h-5" /> </span>
-          <span class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java Icon" class="w-5 h-5" /> </span>
+    </section>
+
+    <section id="work" class="section">
+      <div class="container">
+        <p class="section-kicker">Work</p>
+        <h2>Featured Projects</h2>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-media media-one">
+              <img src="Minecraft-Automation-Bot.png" alt="Minecraft Automation Bot preview" loading="lazy">
+              <span>Minecraft Automation Bot</span>
+            </div>
+            <div class="project-content">
+              <h3>Minecraft Automation Bot</h3>
+              <p>Developed using <strong>Node.js</strong>, this bot can perform automated movement, jumping, and PvP actions in Minecraft.</p>
+              <ul class="tag-list">
+                <li>Node.js</li>
+                <li>JavaScript</li>
+                <li>Automation</li>
+              </ul>
+              <span class="project-link disabled">Private Build</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media media-two">
+              <img src="Learn-Coding-Website.png" alt="Learn Coding Website preview" loading="lazy">
+              <span>Learn Coding Website</span>
+            </div>
+            <div class="project-content">
+              <h3>Learn Coding Website</h3>
+              <p>A comprehensive coding learning platform built with modern web technologies.</p>
+              <ul class="tag-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive UI</li>
+              </ul>
+              <span class="project-link disabled">Private Build</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media media-three">
+              <img src="Bonda-Flappy-Game.png" alt="Bonda Flappy Game preview" loading="lazy">
+              <span>Bonda Flappy Game</span>
+            </div>
+            <div class="project-content">
+              <h3>Bonda Flappy Game</h3>
+              <p>Bonda Flappy is a fun and simple web-based Flappy Bird-style game. Fully built using HTML, CSS, and JavaScript.</p>
+              <ul class="tag-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+              <a class="project-link" href="https://bonda-flappy.vercel.app/" target="_blank" rel="noopener">View Live Project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media media-four">
+              <img src="FinRacer.png" alt="FinRacer preview" loading="lazy">
+              <span>FinRacer</span>
+            </div>
+            <div class="project-content">
+              <h3>FinRacer</h3>
+              <p>FinRacer is a web-based virtual stock market simulator built using HTML, CSS (Tailwind CSS), JavaScript, and TypeScript.</p>
+              <ul class="tag-list">
+                <li>HTML</li>
+                <li>Tailwind CSS</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+              </ul>
+              <a class="project-link" href="https://finracer.vercel.app/" target="_blank" rel="noopener">View Live Project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media media-five">
+              <img src="PD-Fighting-Game.png" alt="PD Fighting Game preview" loading="lazy">
+              <span>PD Fighting Game</span>
+            </div>
+            <div class="project-content">
+              <h3>PD Fighting Game</h3>
+              <p>PD is a fast-paced, local multiplayer fighting game built using HTML, Tailwind CSS, TypeScript, and Vite. Players can challenge friends, battle AI, or compete over local network.</p>
+              <ul class="tag-list">
+                <li>HTML</li>
+                <li>Tailwind CSS</li>
+                <li>TypeScript</li>
+                <li>Vite</li>
+              </ul>
+              <a class="project-link" href="https://pd-eight-psi.vercel.app/" target="_blank" rel="noopener">View Live Project</a>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="w-full max-w-6xl mt-16 sm:mt-24 p-4 section-fade-in">
-    <h2 class="section-title">Featured Projects</h2>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      
-      <!-- Project Card 1: Minecraft Automation Bot -->
-      <div class="project-card">
-        <img src="Heading.png" alt="Minecraft Bot Screenshot" class="w-full h-48 object-cover"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-accent-light mb-2">Minecraft Automation Bot</h3>
-          <p class="text-slate-300 text-sm mb-4">Developed using <strong class="text-accent-light">Node.js</strong>, this bot can perform automated movement, jumping, and PvP actions in Minecraft.</p>
-          <div class="flex justify-between items-center">
-            <div class="flex space-x-3">
-              <a href="#" class="project-icon-btn">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="#" class="project-icon-btn">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-            <a href="#" class="project-action-btn">View Details</a>
-          </div>
+    <section id="process" class="section">
+      <div class="container">
+        <p class="section-kicker">Process</p>
+        <h2>How I Work</h2>
+        <div class="process-grid">
+          <article class="process-card">
+            <p class="step">01</p>
+            <h3>Discover</h3>
+            <p>We discuss your idea, target users, and technical requirements to define the project scope.</p>
+          </article>
+          <article class="process-card">
+            <p class="step">02</p>
+            <h3>Plan &amp; Architect</h3>
+            <p>I design the system architecture, choose the right tech stack, and plan for scalability.</p>
+          </article>
+          <article class="process-card">
+            <p class="step">03</p>
+            <h3>Build &amp; Iterate</h3>
+            <p>I develop the product with clean code, regular updates, and transparent communication.</p>
+          </article>
+          <article class="process-card">
+            <p class="step">04</p>
+            <h3>Deploy &amp; Support</h3>
+            <p>We launch your project and ensure everything runs smoothly post-release.</p>
+          </article>
         </div>
       </div>
-      
-      <!-- Project Card 2: leran coding website -->
-      <div class="project-card">
-        <img src="Present in Style.png" alt="leran coding website Screenshot" class="w-full h-48 object-cover"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-accent-light mb-2">Learn Coding Website</h3>
-          <p class="text-slate-300 text-sm mb-4">A comprehensive coding learning platform built with modern web technologies.</p>
-          <div class="flex justify-between items-center">
-            <div class="flex space-x-3">
-              <a href="#" class="project-icon-btn">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="#" class="project-icon-btn">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-            <a href="#" class="project-action-btn">View Details</a>
-          </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-kicker">Testimonials</p>
+        <h2>What Collaborators Say</h2>
+        <div class="testimonial-grid">
+          <blockquote class="testimonial-card">
+            <p>"Ameen is a highly skilled developer. He didn't just implement features; he optimized our database queries, making the app significantly faster. His problem-solving skills are top-tier."</p>
+            <cite>Past Client (Placeholder)</cite>
+          </blockquote>
+
+          <blockquote class="testimonial-card">
+            <p>"Working with Ameen was great. He took our design and turned it into a pixel-perfect, responsive web app. His communication and code quality made the entire process smooth and efficient."</p>
+            <cite>Teammate (Placeholder)</cite>
+          </blockquote>
         </div>
       </div>
+    </section>
 
-      <!-- Project Card 3: Bonda Flappy Game -->
-      <div class="project-card">
-        <img src="Bonda.png" alt="Bonda Flappy Game Screenshot" class="w-full h-48 object-cover"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-accent-light mb-2">Bonda Flappy Game</h3>
-          <p class="text-slate-300 text-sm mb-4">Bonda Flappy is a fun and simple web-based Flappy Bird-style game. Fully built using HTML, CSS, and JavaScript.</p>
-          <div class="flex justify-between items-center">
-            <div class="flex space-x-3">
-              <a href="#" class="project-icon-btn">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://bonda-flappy.vercel.app/" class="project-icon-btn">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-            <a href="https://bonda-flappy.vercel.app/" class="project-action-btn">Play Now</a>
-          </div>
+    <section class="section">
+      <div class="container">
+        <p class="section-kicker">FAQ</p>
+        <h2>Common Questions</h2>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>What is your development process like?</summary>
+            <p>I follow a 4-step workflow: Discover, Plan &amp; Architect, Build &amp; Iterate, and Deploy &amp; Support, so every project stays clear, scalable, and well-managed from idea to launch.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What technologies do you specialize in?</summary>
+            <p>I specialize in the MERN stack (MongoDB, Express, React, Node.js), along with TypeScript, Tailwind CSS, and have strong fundamentals in Python and algorithmic problem-solving.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can you work on both frontend and backend?</summary>
+            <p>Absolutely. As a Full Stack Developer, I'm comfortable building complete web applications from the user interface down to the database and server logic.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How do you handle project timelines?</summary>
+            <p>I provide realistic timelines upfront and value clear communication, ensuring we're always aligned on progress and any adjustments needed.</p>
+          </details>
         </div>
       </div>
+    </section>
 
-      <!-- Project Card 4: FinRacer -->
-      <div class="project-card">
-        <img src="FinRacer.png" alt="FinRacer Game Screenshot" class="w-full h-48 object-cover"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-accent-light mb-2">FinRacer</h3>
-          <p class="text-slate-300 text-sm mb-4">FinRacer is a web-based virtual stock market simulator built using HTML, CSS (Tailwind CSS), JavaScript, and TypeScript.</p>
-          <div class="flex justify-between items-center">
-            <div class="flex space-x-3">
-              <a href="#" class="project-icon-btn">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://finracer.vercel.app/" class="project-icon-btn">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-            <a href="https://finracer.vercel.app/" class="project-action-btn">Play Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project Card 5: PD -->
-      <div class="project-card">
-        <img src="pd-.png" alt="PD Game Screenshot" class="w-full h-48 object-cover"/>
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-accent-light mb-2">PD Fighting Game</h3>
-          <p class="text-slate-300 text-sm mb-4">PD is a fast-paced, local multiplayer fighting game built using HTML, Tailwind CSS, TypeScript, and Vite. Players can challenge friends, battle AI, or compete over local network.</p>
-          <div class="flex justify-between items-center">
-            <div class="flex space-x-3">
-              <a href="#" class="project-icon-btn">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://pd-eight-psi.vercel.app/" class="project-icon-btn">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-            <a href="https://pd-eight-psi.vercel.app/" class="project-action-btn">Play Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="text-center mt-12">
-      <a href="#" class="cta-btn">
-        <i class="fas fa-folder-open mr-2"></i> View All Projects
-      </a>
-    </div>
-  </section>
-  
-  <!-- Contact Me Section -->
-  <section id="contact" class="w-full max-w-6xl mt-16 sm:mt-24 p-4 section-fade-in">
-    <h2 class="section-title animate-float">Get In Touch</h2>
-    
-    <div class="bg-gradient-to-br from-secondary-dark/90 to-slate-900/90 p-6 sm:p-8 rounded-2xl shadow-2xl border border-accent/30 backdrop-blur-sm animate-slideIn">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Contact Form -->
-        <div>
-          <div class="flex items-center mb-6">
-            <div class="bg-gradient-to-r from-accent to-accent-light p-2 rounded-lg mr-3 animate-pulse">
-              <i class="fas fa-envelope text-white text-xl"></i>
-            </div>
-            <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-light animate-fadeIn">
-              Send a Message
-            </h3>
-          </div>
-          
-<form id="contact-form" class="space-y-5">
-  <div class="animate-slideIn" style="animation-delay: 0.1s">
-    <label for="name" class="block text-slate-300 mb-1 font-medium">Name</label>
-    <div class="relative">
-      <input type="text" id="name" name="entry.54922028" required 
-             class="form-input bg-slate-900/60 border-slate-700 hover:border-accent/50 focus:border-accent 
-                    transition-all duration-300 focus:ring-2 focus:ring-accent/50"
-             placeholder="">
-    </div>
-  </div>
-  
-  <div class="animate-slideIn" style="animation-delay: 0.2s">
-    <label for="email" class="block text-slate-300 mb-1 font-medium">Email</label>
-    <div class="relative">
-      <input type="email" id="email" name="entry.1407482820" required 
-             class="form-input bg-slate-900/60 border-slate-700 hover:border-accent/50 focus:border-accent 
-                    transition-all duration-300 focus:ring-2 focus:ring-accent/50"
-             placeholder="">
-    </div>
-  </div>
-  
-  <div class="animate-slideIn" style="animation-delay: 0.3s">
-    <label for="subject" class="block text-slate-300 mb-1 font-medium">Subject</label>
-    <div class="relative">
-      <input type="text" id="subject" name="entry.777747939" required 
-             class="form-input bg-slate-900/60 border-slate-700 hover:border-accent/50 focus:border-accent 
-                    transition-all duration-300 focus:ring-2 focus:ring-accent/50"
-             placeholder="">
-    </div>
-  </div>
-  
-  <div class="animate-slideIn" style="animation-delay: 0.4s">
-    <label for="message" class="block text-slate-300 mb-1 font-medium">Message</label>
-    <div class="relative">
-      <textarea id="message" name="entry.1741575222" rows="4" required 
-                class="form-input bg-slate-900/60 border-slate-700 hover:border-accent/50 focus:border-accent 
-                       transition-all duration-300 focus:ring-2 focus:ring-accent/50"
-                placeholder=""></textarea>
-    </div>
-  </div>
-  
-  <button type="submit" 
-          class="w-full mt-2 bg-gradient-to-r from-accent to-accent-light text-white font-semibold 
-                 py-3 rounded-lg shadow-lg shadow-accent/40 transition-all duration-300 
-                 hover:shadow-xl hover:shadow-accent/50 hover:scale-[1.02] 
-                 active:scale-[0.98] animate-slideIn group"
-          style="animation-delay: 0.5s">
-    <i class="fas fa-paper-plane mr-2 group-hover:animate-bounce"></i> 
-    Send Message
-  </button>
-</form>
-
-<!-- Hidden iframe for Google Form submission -->
-<iframe id="hidden-form" name="hidden-form" style="display: none;"></iframe>
-
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="contact-cta">
+          <p class="section-kicker">Contact</p>
+          <h2>Ready to Build Something Amazing?</h2>
+          <p>Have a project or an idea? Let's discuss how I can help turn it into reality.</p>
+          <a class="btn btn-primary" href="#contact-form">Start Your Project</a>
         </div>
 
-        <!-- Direct Contact Info -->
-        <div class="space-y-8 animate-slideIn">
-          <div class="flex items-center mb-6">
-            <div class="bg-gradient-to-r from-accent to-accent-light p-2 rounded-lg mr-3 animate-pulse">
-              <i class="fas fa-phone-alt text-white text-xl"></i>
-            </div>
-            <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-light">
-              Or Reach Me Directly
-            </h3>
-          </div>
+        <div class="contact-grid">
+          <aside class="contact-card">
+            <h3>Contact Details</h3>
+            <ul>
+              <li>
+                <span>Location</span>
+                <p>Malappuram, Kerala, India</p>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a href="https://www.linkedin.com/in/muhammeed-ameeen-7a161134b" target="_blank" rel="noopener">Connect on LinkedIn</a>
+              </li>
+              <li>
+                <span>Instagram</span>
+                <a href="https://www.instagram.com/am1een__/" target="_blank" rel="noopener">@am1een__</a>
+              </li>
+              <li>
+                <span>Instagram</span>
+                <a href="https://www.instagram.com/dm.am1een/" target="_blank" rel="noopener">@dm.am1een</a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://github.com/muhammedameen991" target="_blank" rel="noopener">github.com</a>
+              </li>
+            </ul>
+          </aside>
 
-          <!-- Contact Items with hover effects -->
-          <div class="contact-item hover:bg-gradient-to-r hover:from-accent/10 hover:to-accent-light/10 p-4 rounded-xl transition-all duration-300">
-            <div class="flex items-center space-x-4">
-              <div class="contact-icon bg-gradient-to-r from-accent to-accent-light animate-pulse">
-                <i class="fas fa-envelope text-white"></i>
-              </div>
-              <div>
-                <p class="text-slate-400 text-sm">Email</p>
-                <a href="" 
-                   class="text-white hover:text-accent-light transition duration-300 font-medium 
-                          hover:underline hover:underline-offset-2">
-                  
-                </a>
-              </div>
-            </div>
-          </div>
+          <form id="contact-form" class="contact-form">
+            <label for="name">Name</label>
+            <input id="name" name="entry.54922028" type="text" required>
 
-          <div class="contact-item hover:bg-gradient-to-r hover:from-accent/10 hover:to-accent-light/10 p-4 rounded-xl transition-all duration-300">
-            <div class="flex items-center space-x-4">
-              <div class="contact-icon bg-gradient-to-r from-accent to-accent-light animate-pulse" style="animation-delay: 0.2s">
-                <i class="fab fa-linkedin text-white"></i>
-              </div>
-              <div>
-                <p class="text-slate-400 text-sm">LinkedIn</p>
-                <a href="https://www.linkedin.com/in/muhammeed-ameeen-7a161134b" target="_blank" 
-                   class="text-white hover:text-accent-light transition duration-300 font-medium 
-                          hover:underline hover:underline-offset-2">
-                  Connect with me on LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="contact-item hover:bg-gradient-to-r hover:from-accent/10 hover:to-accent-light/10 p-4 rounded-xl transition-all duration-300">
-            <div class="flex items-center space-x-4">
-              <div class="contact-icon bg-gradient-to-r from-accent to-accent-light animate-pulse" style="animation-delay: 0.4s">
-                <i class="fas fa-map-marker-alt text-white"></i>
-              </div>
-              <div>
-                <p class="text-slate-400 text-sm">Location</p>
-                <p class="text-white font-medium">Malappuram, Kerala, India</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Animated Map Placeholder -->
-          <div class="mt-8 rounded-xl overflow-hidden h-48 bg-gradient-to-br from-slate-800 to-slate-900 
-                      border border-accent/20 flex items-center justify-center relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-accent/5 to-transparent animate-shimmer"></div>
-            
-            <!-- Animated location marker -->
-            <div class="relative z-10 text-center">
-              <div class="mb-4 relative">
-                <div class="w-12 h-12 mx-auto bg-gradient-to-r from-accent to-accent-light 
-                            rounded-full flex items-center justify-center animate-bounce">
-                  <i class="fas fa-map-pin text-white text-xl"></i>
-                </div>
-                <div class="absolute inset-0 w-12 h-12 mx-auto border-2 border-accent rounded-full animate-ping opacity-20"></div>
-              </div>
-              <p class="text-slate-400 font-medium">📍 Malappuram, Kerala</p>
-              <p class="text-white text-sm mt-1">Based in India</p>
-            </div>
-          </div>
+            <label for="email">Email</label>
+            <input id="email" name="entry.1407482820" type="email" required>
+
+            <label for="subject">Subject</label>
+            <input id="subject" name="entry.777747939" type="text" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="entry.1741575222" rows="5" required></textarea>
+
+            <button class="btn btn-primary" id="submit-btn" type="submit">Send Message</button>
+
+            <p id="form-success" class="form-message success" hidden>Message sent successfully! I'll get back to you soon.</p>
+            <p id="form-error" class="form-message error" hidden>There was an error sending your message. Please try again.</p>
+          </form>
         </div>
       </div>
-      
-      <!-- Form Submission Success Animation -->
-      <div id="success-message" class="hidden mt-6 p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 
-                                       rounded-xl border border-green-500/30 text-center animate-fadeIn">
-        <i class="fas fa-check-circle text-green-400 text-2xl mb-2"></i>
-        <p class="text-green-300 font-medium">Message sent successfully! I'll get back to you soon.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="mt-20 p-6 w-full text-center text-slate-500 border-t border-slate-700/50">
-    <div class="max-w-6xl mx-auto">
-      <p>&copy; 2025 Muhamed Ameen.E. All rights reserved. <span class="text-accent"></span>
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="#" class="text-slate-400 hover:text-accent transition duration-200">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="#" class="text-slate-400 hover:text-accent transition duration-200">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="#" class="text-slate-400 hover:text-accent transition duration-200">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Muhamed Ameen E. All rights reserved.</p>
     </div>
   </footer>
-  
-  <!-- Back to Top Button -->
-  <button id="back-to-top" class="fixed bottom-8 right-8 bg-accent text-white p-3 rounded-full shadow-lg hover:bg-accent-light transition duration-300 opacity-0 invisible">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-  
-  <!-- JavaScript for interactivity -->
+
   <script>
-    // Back to top button
-    const backToTopButton = document.getElementById('back-to-top');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopButton.classList.remove('opacity-100', 'visible');
-        backToTopButton.classList.add('opacity-0', 'invisible');
-      }
+    const navToggle = document.getElementById('nav-toggle');
+    const siteNav = document.getElementById('site-nav');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
     });
-    
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
     });
-    
-    // Navbar background on scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navbar.classList.add('bg-secondary-dark');
-      } else {
-        navbar.classList.remove('bg-secondary-dark');
-      }
-    });
-    
-    // Form submission - Google Forms Integration
-    const contactForm = document.getElementById('contact-form');
-    const successMessage = document.getElementById('success-message');
-    const hiddenFrame = document.getElementById('hidden-form');
-    
-    // Google Form action URL
+
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const success = document.getElementById('form-success');
+    const error = document.getElementById('form-error');
+
     const googleFormURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSflRXZrRr_cCyGBdfQo2WTqbEYaGsQgOWpzLXNiG2UxE0mpfw/formResponse';
-    
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Get form values
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
-      
-      // Create FormData with Google Form entry IDs
-      const formData = new FormData();
-      formData.append('entry.54922028', name);
-      formData.append('entry.1407482820', email);
-      formData.append('entry.777747939', subject);
-      formData.append('entry.1741575222', message);
-      
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      success.hidden = true;
+      error.hidden = true;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      const data = new FormData(form);
+
       try {
-        // Submit to Google Form using fetch with no-cors mode
         await fetch(googleFormURL, {
           method: 'POST',
-          body: formData,
+          body: data,
           mode: 'no-cors'
         });
-        
-        // Show success message
-        successMessage.classList.remove('hidden');
-        contactForm.style.opacity = '0.6';
-        contactForm.style.pointerEvents = 'none';
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Hide success message after 5 seconds and re-enable form
+
+        form.reset();
+        success.hidden = false;
+
         setTimeout(() => {
-          successMessage.classList.add('hidden');
-          contactForm.style.opacity = '1';
-          contactForm.style.pointerEvents = 'auto';
+          success.hidden = true;
         }, 5000);
-        
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        alert('There was an error sending your message. Please try again.');
+      } catch (submitError) {
+        error.hidden = false;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
       }
     });
 
-    
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-slideIn');
-        }
-      });
-    }, observerOptions);
-    
-    // Observe all sections for animation
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-    
-    // Animate skill chips
-    const skillChips = document.querySelectorAll('.skill-chip');
-    skillChips.forEach((chip, index) => {
-      chip.style.animationDelay = `${index * 0.1}s`;
-    });
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  
-  <!-- Tailwind Component Classes (for reusability and cleaner markup) -->
-  <style>
-    .nav-link {
-        @apply text-slate-300 font-medium hover:text-accent-light transition duration-200 px-3 py-1 rounded-lg;
-    }
-    .section-title {
-        @apply text-3xl font-extrabold text-accent-light text-center mb-8 pb-3 border-b-2 border-accent-light/40 w-fit mx-auto;
-    }
-    .cta-btn {
-      @apply inline-flex items-center px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-lg shadow-accent/40 transition-all duration-300 hover:bg-accent-light hover:shadow-xl hover:scale-[1.02] glow-on-hover;
-    }
-    .cta-btn-secondary {
-      @apply inline-flex items-center px-6 py-3 bg-transparent border border-accent text-accent font-semibold rounded-lg transition-all duration-300 hover:bg-accent hover:text-white hover:scale-[1.02];
-    }
-    .social-link {
-      @apply inline-flex items-center justify-center w-10 h-10 bg-slate-700 rounded-full text-white transition-all duration-300 hover:bg-accent hover:shadow-lg hover:shadow-accent/50 hover:scale-[1.1];
-    }
-    .skill-chip {
-      @apply flex items-center gap-2 bg-slate-700/50 text-slate-200 text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 cursor-pointer hover:bg-accent hover:text-white hover:scale-[1.05] shadow-md animate-slideIn opacity-0;
-    }
-    .project-card {
-      @apply bg-secondary-dark rounded-xl overflow-hidden shadow-xl border border-slate-700/50 transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/30 hover:-translate-y-1;
-    }
-    .project-action-btn {
-      @apply inline-block px-6 py-2 bg-accent text-white font-semibold rounded-lg shadow-lg shadow-accent/40 transition-all duration-300 hover:bg-accent-light hover:shadow-xl hover:scale-[1.02];
-    }
-    .project-icon-btn {
-      @apply inline-flex items-center justify-center w-10 h-10 bg-slate-700 rounded-full text-white transition-all duration-300 hover:bg-accent hover:shadow-lg hover:shadow-accent/50;
-    }
-    .tech-tag {
-      @apply bg-slate-800/80 text-slate-300 text-xs px-2 py-1 rounded;
-    }
-    .form-input {
-      @apply w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-accent focus:border-accent transition duration-200;
-    }
-    .contact-icon {
-      @apply bg-accent/20 p-3 rounded-full text-accent;
-    }
-  </style>
 </body>
 </html>
