@@ -11,6 +11,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="ambient-particles" aria-hidden="true">
+    <span style="--i: 1"></span>
+    <span style="--i: 2"></span>
+    <span style="--i: 3"></span>
+    <span style="--i: 4"></span>
+    <span style="--i: 5"></span>
+    <span style="--i: 6"></span>
+    <span style="--i: 7"></span>
+    <span style="--i: 8"></span>
+    <span style="--i: 9"></span>
+    <span style="--i: 10"></span>
+    <span style="--i: 11"></span>
+    <span style="--i: 12"></span>
+  </div>
+
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="#top">Muhamed Ameen E</a>
@@ -79,6 +94,115 @@
           </article>
         </div>
         <p class="trusted-line">Trusted by Collaborators <span aria-hidden="true">&#10084;&#65039;</span></p>
+      </div>
+    </section>
+
+    <section id="transactions" class="section transaction-section">
+      <div class="container">
+        <p class="section-kicker">Fintech Demo</p>
+        <h2>Interactive Transaction Activity</h2>
+        <p class="section-copy">A premium transaction simulation with sending, receiving, processing, and success motion states built in pure CSS + JavaScript.</p>
+
+        <div class="transaction-grid">
+          <article class="transaction-panel activity-card" aria-live="polite">
+            <div class="transaction-top">
+              <p class="tx-label">Payment Gateway</p>
+              <span class="tx-badge" id="tx-session-badge">Session Active</span>
+            </div>
+
+            <div class="tx-main-line">
+              <strong id="tx-amount">$480.00</strong>
+              <span class="tx-direction" id="tx-direction">Sending Payment</span>
+            </div>
+            <p class="tx-meta" id="tx-counterparty">To: Product Design Partner</p>
+
+            <div class="tx-progress-track" aria-hidden="true">
+              <div class="tx-progress-bar" id="tx-progress-bar"></div>
+            </div>
+
+            <ul class="tx-step-list">
+              <li class="tx-step" id="step-send">
+                <span class="tx-step-dot"></span>
+                <div>
+                  <p>Sending payment</p>
+                  <small>Outgoing transfer request</small>
+                </div>
+                <span class="step-status">Queued</span>
+              </li>
+
+              <li class="tx-step" id="step-receive">
+                <span class="tx-step-dot"></span>
+                <div>
+                  <p>Receiving payment</p>
+                  <small>Incoming transfer request</small>
+                </div>
+                <span class="step-status">Queued</span>
+              </li>
+
+              <li class="tx-step" id="step-process">
+                <span class="tx-step-dot"></span>
+                <div>
+                  <p>Processing</p>
+                  <small>Encryption and verification</small>
+                </div>
+                <span class="step-status">Pending</span>
+              </li>
+
+              <li class="tx-step" id="step-success">
+                <span class="tx-step-dot"></span>
+                <div>
+                  <p>Success confirmation</p>
+                  <small>Transfer finalized</small>
+                </div>
+                <span class="step-status">Pending</span>
+              </li>
+            </ul>
+
+            <div class="tx-loader-wrap" id="tx-loader-wrap" hidden>
+              <span class="tx-loader"></span>
+              <p>Processing secure transfer...</p>
+            </div>
+
+            <div class="tx-success" id="tx-success" hidden>
+              <div class="checkmark-shell">
+                <svg class="checkmark-icon" viewBox="0 0 52 52" aria-hidden="true">
+                  <circle class="checkmark-circle" cx="26" cy="26" r="24"></circle>
+                  <path class="checkmark-path" d="M14 27l8 8 16-16"></path>
+                </svg>
+              </div>
+              <p id="tx-success-text">Payment confirmed successfully</p>
+            </div>
+
+            <ul class="tx-feed" id="tx-feed"></ul>
+          </article>
+
+          <article class="transaction-panel history-card">
+            <div class="history-head">
+              <p class="tx-label">Transaction History</p>
+              <span>Card Flip</span>
+            </div>
+
+            <div class="history-flip-card" id="history-flip-card">
+              <div class="history-flip-inner">
+                <div class="history-face history-front">
+                  <p class="history-tag">Latest</p>
+                  <h3 id="history-front-title">Sending Payment</h3>
+                  <p class="history-amount" id="history-front-amount">$480.00</p>
+                  <p class="history-meta" id="history-front-meta">To Product Design Partner</p>
+                </div>
+
+                <div class="history-face history-back">
+                  <p class="history-tag">Previous</p>
+                  <h3 id="history-back-title">Receiving Payment</h3>
+                  <p class="history-amount" id="history-back-amount">$1,240.00</p>
+                  <p class="history-meta" id="history-back-meta">From Client Milestone</p>
+                </div>
+              </div>
+            </div>
+
+            <ul class="history-mini" id="history-mini"></ul>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -348,61 +472,6 @@
     </div>
   </footer>
 
-  <script>
-    const navToggle = document.getElementById('nav-toggle');
-    const siteNav = document.getElementById('site-nav');
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = siteNav.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    siteNav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        siteNav.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const success = document.getElementById('form-success');
-    const error = document.getElementById('form-error');
-
-    const googleFormURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSflRXZrRr_cCyGBdfQo2WTqbEYaGsQgOWpzLXNiG2UxE0mpfw/formResponse';
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      success.hidden = true;
-      error.hidden = true;
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-
-      const data = new FormData(form);
-
-      try {
-        await fetch(googleFormURL, {
-          method: 'POST',
-          body: data,
-          mode: 'no-cors'
-        });
-
-        form.reset();
-        success.hidden = false;
-
-        setTimeout(() => {
-          success.hidden = true;
-        }, 5000);
-      } catch (submitError) {
-        error.hidden = false;
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-      }
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
